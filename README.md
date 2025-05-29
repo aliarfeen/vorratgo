@@ -1,16 +1,24 @@
-# vorratgo
+# VorratGo 🛒
+**VorratGo** is a modern, sleek, and scalable eCommerce mobile application built using **Flutter**. Designed for speed, performance, and great user experience, VorratGo enables users to browse categories, discover offers, search products, and manage carts efficiently.
 
-A new Flutter project.
+---
 
-## Getting Started
+## 📱 Features
 
-This project is a starting point for a Flutter application.
+- 🛍️ **Product Catalog** – View products organized into categories
+- 🎯 **Featured Offers** – Showcase deals and discounts dynamically
+- 🔍 **Powerful Search** – Find products quickly using search with filters
+- 🛒 **Cart Management** – Add, remove, and edit cart items with real-time updates
+- 💳 **Checkout Flow** – Streamlined order placement (UI only)
+- 🌐 **API Integration Ready** – Easily connect your backend via RESTful APIs
+- 🎨 **Beautiful UI/UX** – Clean layout with responsive design using Flutter
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Tech Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Flutter** – Frontend framework
+- **Dart** – Primary language
+- **BLoC** – for state management
+- **Dio** – for API calls
+- **Firebase**  integrated for auth, database, and analytics
