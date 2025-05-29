@@ -1,0 +1,6 @@
+{
+    "add_number":"Add Phone Number",
+    "add_number_description":"Please enter your phone number to receive a verification code.",
+    "add_number_hint":"Phone Number",
+    "add_number_button":"Send Code"
+}

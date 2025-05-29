@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1044230896917",
+    "project_id": "varrot-go",
+    "storage_bucket": "varrot-go.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044230896917:android:5814c0190e35646d98bd1c",
+        "android_client_info": {
+          "package_name": "com.example.vorratgo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjWdv7ZJYJuwu0VfzmcKlPnXnpzEfzRQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
