@@ -28,5 +28,38 @@ class MessageLookup extends MessageLookupByLibrary {
       "يرجى إدخال رقم هاتفك لتلقي رمز التحقق.",
     ),
     "add_number_hint": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "bakery": MessageLookupByLibrary.simpleMessage("المخبز"),
+    "beverages": MessageLookupByLibrary.simpleMessage("المشروبات"),
+    "canned_foods": MessageLookupByLibrary.simpleMessage("الأطعمة المعلبة"),
+    "cart": MessageLookupByLibrary.simpleMessage("السلة"),
+    "categries": MessageLookupByLibrary.simpleMessage("التصنيفات"),
+    "chesse": MessageLookupByLibrary.simpleMessage("الجبن"),
+    "get_started": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
+    "grocery": MessageLookupByLibrary.simpleMessage("البقالة"),
+    "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "login_as_guest": MessageLookupByLibrary.simpleMessage(
+      "تسجيل الدخول كزائر",
+    ),
+    "onboarding_caption_0": MessageLookupByLibrary.simpleMessage(
+      "اكتشف المنتجات التي تحبها\n\nاستكشف الفئات الرئيسية والعناصر الرائجة المصممة خصيصًا لك.",
+    ),
+    "onboarding_caption_1": MessageLookupByLibrary.simpleMessage(
+      "كل ما تحتاجه، يتم توصيله بسرعة\n\nمن الضروريات اليومية إلى الاكتشافات الخاصة - تسوق في أي وقت ومن أي مكان مع VorratGo.",
+    ),
+    "onboarding_caption_2": MessageLookupByLibrary.simpleMessage(
+      "احصل على عروض وصفقات حصرية\n\nافتح الخصومات المحدودة الوقت والعروض الخاصة - فقط على VorratGo.",
+    ),
+    "pet_foods": MessageLookupByLibrary.simpleMessage(
+      "أطعمة الحيوانات الأليفة",
+    ),
+    "profile": MessageLookupByLibrary.simpleMessage("الحساب"),
+    "search": MessageLookupByLibrary.simpleMessage("بحث"),
+    "verification_button_label": MessageLookupByLibrary.simpleMessage("تحقق"),
+    "verify_your_number": MessageLookupByLibrary.simpleMessage(
+      "تحقق من رقم هاتفك",
+    ),
+    "verify_your_number_description": MessageLookupByLibrary.simpleMessage(
+      "أدخل الرمز المكون من 6 ارقام المرسل إلى رقم هاتفك .",
+    ),
   };
 }

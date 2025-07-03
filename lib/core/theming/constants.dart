@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -45,11 +43,36 @@ class TextStyles {
     color: Colors.white,
     fontWeight: FontWeight.bold,
   );
+
+  static TextStyle black16Reguler = TextStyle(
+    fontSize: 16.sp,
+    color: Colors.black,
+  );
+
+  static TextStyle black16Bold = TextStyle(
+    fontSize: 16.sp,
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+  );
+  static TextStyle black20Bold = TextStyle(
+    fontSize: 20.sp,
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+  );
+
+  static TextStyle grey16Regular = TextStyle(
+    fontSize: 16.sp,
+    color: AppColors.grey,
+  );
 }
 
 class AppColors {
   static const Color green = Color(0xFF074931);
+  static const Color lightGreen = Color.fromARGB(47, 26, 255, 171);
+
   static const Color grey = Color.fromARGB(255, 58, 58, 58);
+
+  static const Color lightGrey = Color.fromARGB(255, 195, 195, 195);
   static const Color orange = Color(0xFFf47015);
   static const Color yellow = Color(0xFFfabc0c);
 }

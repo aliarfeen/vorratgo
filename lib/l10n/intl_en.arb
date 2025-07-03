@@ -1,6 +1,28 @@
 {
+    "onboarding_caption_0":"Discover Products You Love\n\nExplore top categories and trending items tailored just for you.",
+    "onboarding_caption_1":"Everything You Need, Delivered Fast\n\nFrom daily essentials to special finds — shop anytime, anywhere with VorratGo.",
+    "onboarding_caption_2":"Get Exclusive Deals & Offers\n\nUnlock limited-time discounts and special promotions — only on VorratGo.",
+    
+    "get_started":"Get Started",
     "add_number":"Add Phone Number",
     "add_number_description":"Please enter your phone number to receive a verification code.",
     "add_number_hint":"Phone Number",
-    "add_number_button":"Send Code"
+    "add_number_button":"Send Code",
+    "verify_your_number":"Verify Your Phone Number",
+    "verify_your_number_description":"Enter the 6-digit code sent to your phone number.",
+    "verification_button_label":"Verify",
+    "login_as_guest":"Login as Guest",
+
+    "categries":"Categories",
+    "bakery":"Bakery",
+    "beverages":"Beverages",
+    "canned_foods":"Canned Foods",
+    "chesse":"Cheese",
+    "grocery":"Grocery",
+    "pet_foods":"Pet Foods",
+
+    "home":"Home",
+    "search":"Search",
+    "cart":"Cart",
+    "profile":"Profile"
 }

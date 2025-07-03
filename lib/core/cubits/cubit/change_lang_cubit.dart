@@ -1,14 +1,23 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:vorratgo/core/data/select_lang_repository.dart';
 
 class ChangeLangCubit extends Cubit<Locale> {
-  ChangeLangCubit() : super(const Locale('en'));
+  final SelectLangRepository _languageRepository;
+  ChangeLangCubit(this._languageRepository)
+    : super(_languageRepository.getSavedLanguage());
 
-  void toggleLanguage() {
-    emit(state.languageCode == 'en' ? const Locale('ar') : const Locale('en'));
+  void toggleLanguage() async {
+    final newLocale =
+        state.languageCode == 'en' ? const Locale('ar') : const Locale('en');
+    await _languageRepository.saveLanguage(
+      newLocale.languageCode,
+    ); // Save the new language
+    emit(newLocale); // Emit the new state
   }
 
-  void setLanguage(Locale locale) {
+  void setLanguage(Locale locale) async {
+    await _languageRepository.saveLanguage(locale.languageCode);
     emit(locale);
   }
 }

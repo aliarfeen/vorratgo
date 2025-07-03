@@ -12,6 +12,7 @@ class AppTextFieldForm extends StatelessWidget {
   final bool? isReadOnly;
   final Widget? suffixIcon;
   final Function(String?) validator;
+  final Function(String)? onChanged;
   final TextEditingController? controller;
 
   const AppTextFieldForm({
@@ -21,6 +22,7 @@ class AppTextFieldForm extends StatelessWidget {
     required this.hintText,
     this.keyboardType,
     this.isEnabled,
+    this.onChanged,
     this.isReadOnly,
     this.controller,
     this.isObsecured,
@@ -43,6 +45,7 @@ class AppTextFieldForm extends StatelessWidget {
         style: TextStyles.green16Reguler,
         cursorErrorColor: Colors.red,
         obscuringCharacter: '*',
+        onChanged: onChanged,
         decoration: InputDecoration(
           isDense: true,
           filled: true,

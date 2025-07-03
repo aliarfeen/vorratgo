@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:vorratgo/core/helpers/spacers.dart';
 import 'package:vorratgo/core/theming/constants.dart';
 import 'package:vorratgo/features/home/presentation/widgets/categories.dart';
-import 'package:vorratgo/features/home/presentation/widgets/home_cards.dart';
+import 'package:vorratgo/features/home/presentation/widgets/offer_cards.dart';
 import 'package:vorratgo/features/home/presentation/widgets/vorrat_go_span.dart';
+import 'package:vorratgo/generated/l10n.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,28 +13,26 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        floatingActionButton: floatingButton(context),
         body: Padding(
-          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          padding: EdgeInsets.symmetric(vertical: 8),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 VorratGoSpan(),
-                verticalSpacer(8),
-                SearchBar(
-                  padding: const WidgetStatePropertyAll<EdgeInsets>(
-                    EdgeInsets.symmetric(horizontal: 16.0),
-                  ),
+                // SearchBar(
+                //   padding: const WidgetStatePropertyAll<EdgeInsets>(
+                //     EdgeInsets.symmetric(horizontal: 16.0),
+                //   ),
 
-                  leading: const Icon(Icons.search),
-                ),
+                //   leading: const Icon(Icons.search),
+                // ),
                 verticalSpacer(8),
 
-                OnLandingCards(),
+                Offer_Cards(),
                 verticalSpacer(8),
                 Text(
-                  'Categories',
+                  S.of(context).categries,
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -47,23 +46,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  FloatingActionButton floatingButton(BuildContext context) {
-    return FloatingActionButton(
-      foregroundColor: Colors.white,
-      backgroundColor: AppColors.orange,
-      shape: CircleBorder(),
-      onPressed: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Button Pressed'),
-            duration: Duration(seconds: 2),
-          ),
-        );
-      },
-      child: IconButton(onPressed: () {}, icon: Icon(Icons.person)),
     );
   }
 }

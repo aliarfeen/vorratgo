@@ -1,6 +1,27 @@
 {
+    "onboarding_caption_0":"اكتشف المنتجات التي تحبها\n\nاستكشف الفئات الرئيسية والعناصر الرائجة المصممة خصيصًا لك.",
+    "onboarding_caption_1":"كل ما تحتاجه، يتم توصيله بسرعة\n\nمن الضروريات اليومية إلى الاكتشافات الخاصة - تسوق في أي وقت ومن أي مكان مع VorratGo.",
+    "onboarding_caption_2":"احصل على عروض وصفقات حصرية\n\nافتح الخصومات المحدودة الوقت والعروض الخاصة - فقط على VorratGo.",
+    "get_started":"ابدأ الآن",
     "add_number":"أضف رقم الهاتف",
     "add_number_description":"يرجى إدخال رقم هاتفك لتلقي رمز التحقق.",
     "add_number_hint":"رقم الهاتف",
-    "add_number_button":"إرسال الرمز"
+    "add_number_button":"إرسال الرمز",
+    "verify_your_number":"تحقق من رقم هاتفك",
+    "verify_your_number_description":"أدخل الرمز المكون من 6 ارقام المرسل إلى رقم هاتفك .",
+    "verification_button_label":"تحقق",
+    "login_as_guest":"تسجيل الدخول كزائر",
+
+    "categries":"التصنيفات",
+    "bakery":"المخبز",  
+    "beverages":"المشروبات",
+    "canned_foods":"الأطعمة المعلبة",
+    "chesse":"الجبن",
+    "grocery":"البقالة",
+    "pet_foods":"أطعمة الحيوانات الأليفة",
+
+    "home":"الرئيسية",
+    "search":"بحث", 
+    "cart":"السلة",
+    "profile":"الحساب"
 }

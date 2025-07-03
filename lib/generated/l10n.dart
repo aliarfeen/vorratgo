@@ -55,6 +55,41 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Discover Products You Love\n\nExplore top categories and trending items tailored just for you.`
+  String get onboarding_caption_0 {
+    return Intl.message(
+      'Discover Products You Love\n\nExplore top categories and trending items tailored just for you.',
+      name: 'onboarding_caption_0',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Everything You Need, Delivered Fast\n\nFrom daily essentials to special finds — shop anytime, anywhere with VorratGo.`
+  String get onboarding_caption_1 {
+    return Intl.message(
+      'Everything You Need, Delivered Fast\n\nFrom daily essentials to special finds — shop anytime, anywhere with VorratGo.',
+      name: 'onboarding_caption_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get Exclusive Deals & Offers\n\nUnlock limited-time discounts and special promotions — only on VorratGo.`
+  String get onboarding_caption_2 {
+    return Intl.message(
+      'Get Exclusive Deals & Offers\n\nUnlock limited-time discounts and special promotions — only on VorratGo.',
+      name: 'onboarding_caption_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get Started`
+  String get get_started {
+    return Intl.message('Get Started', name: 'get_started', desc: '', args: []);
+  }
+
   /// `Add Phone Number`
   String get add_number {
     return Intl.message(
@@ -93,6 +128,106 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Verify Your Phone Number`
+  String get verify_your_number {
+    return Intl.message(
+      'Verify Your Phone Number',
+      name: 'verify_your_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the 6-digit code sent to your phone number.`
+  String get verify_your_number_description {
+    return Intl.message(
+      'Enter the 6-digit code sent to your phone number.',
+      name: 'verify_your_number_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify`
+  String get verification_button_label {
+    return Intl.message(
+      'Verify',
+      name: 'verification_button_label',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login as Guest`
+  String get login_as_guest {
+    return Intl.message(
+      'Login as Guest',
+      name: 'login_as_guest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Categories`
+  String get categries {
+    return Intl.message('Categories', name: 'categries', desc: '', args: []);
+  }
+
+  /// `Bakery`
+  String get bakery {
+    return Intl.message('Bakery', name: 'bakery', desc: '', args: []);
+  }
+
+  /// `Beverages`
+  String get beverages {
+    return Intl.message('Beverages', name: 'beverages', desc: '', args: []);
+  }
+
+  /// `Canned Foods`
+  String get canned_foods {
+    return Intl.message(
+      'Canned Foods',
+      name: 'canned_foods',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cheese`
+  String get chesse {
+    return Intl.message('Cheese', name: 'chesse', desc: '', args: []);
+  }
+
+  /// `Grocery`
+  String get grocery {
+    return Intl.message('Grocery', name: 'grocery', desc: '', args: []);
+  }
+
+  /// `Pet Foods`
+  String get pet_foods {
+    return Intl.message('Pet Foods', name: 'pet_foods', desc: '', args: []);
+  }
+
+  /// `Home`
+  String get home {
+    return Intl.message('Home', name: 'home', desc: '', args: []);
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message('Search', name: 'search', desc: '', args: []);
+  }
+
+  /// `Cart`
+  String get cart {
+    return Intl.message('Cart', name: 'cart', desc: '', args: []);
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message('Profile', name: 'profile', desc: '', args: []);
   }
 }
 
