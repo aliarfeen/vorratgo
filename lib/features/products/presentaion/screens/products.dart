@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vorratgo/core/helpers/extensions.dart';
 import 'package:vorratgo/features/products/cubit/product_cubit.dart';
 import 'package:vorratgo/features/products/cubit/product_state.dart';
 import 'package:vorratgo/features/products/presentaion/widgets/products_grid.dart';
@@ -12,7 +13,14 @@ class ProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: Text(title)),
+        appBar: AppBar(
+          title: Text(title),
+          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.tune))],
+          leading: IconButton(
+            onPressed: () => context.pop(),
+            icon: Icon(Icons.arrow_back_ios_new_outlined),
+          ),
+        ),
         body: BlocConsumer<ProductCubit, ProductState>(
           listener: (context, state) {},
           builder: (context, state) {

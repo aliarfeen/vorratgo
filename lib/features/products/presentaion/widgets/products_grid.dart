@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vorratgo/core/helpers/extensions.dart';
 import 'package:vorratgo/core/helpers/spacers.dart';
 import 'package:vorratgo/core/routing/routes.dart';
 import 'package:vorratgo/core/theming/constants.dart';
-import 'package:vorratgo/features/products/cubit/product_cubit.dart';
 import 'package:vorratgo/features/products/data/model/product_model.dart';
 
 class ProductsGrid extends StatelessWidget {
@@ -33,12 +31,16 @@ class ProductsGrid extends StatelessWidget {
             context.pushNamed(Routes.productDetails, arguments: product);
           },
           child: Container(
-            height: 300.h,
-            width: 150.w,
-            padding: const EdgeInsets.all(16.0),
+            height: 260.h,
+            width: 173.3249969482422.w,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 8.0,
+            ),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12.0),
+              border: Border.all(color: AppColors.grey),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,43 +50,44 @@ class ProductsGrid extends StatelessWidget {
                   tag: product.id,
                   child: Image.network(
                     product.imgUri,
-                    width: 120,
-                    height: 120,
+                    width: 121.68871307373047,
+                    height: 121.68871307373047,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return const Icon(
                         Icons.broken_image,
-                        size: 120,
+                        size: 121.68871307373047,
                         color: Colors.grey,
                       );
                     },
                   ),
                 ),
-                const SizedBox(height: 10),
                 Hero(
                   tag: '${product.id}_name',
                   child: Text(
                     Localizations.localeOf(context).languageCode == 'ar'
                         ? product.name.ar
                         : product.name.en,
+                    textAlign: TextAlign.start,
                   ),
                 ),
-                verticalSpacer(15.h),
+                verticalSpacer(10.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       '${product.price} LE',
                       style: TextStyle(
-                        fontSize: 16.sp,
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.green,
+                        color: Colors.black,
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(Icons.add_shopping_cart),
-                      color: AppColors.orange,
-                      iconSize: 28.h,
+                      icon: const Icon(Icons.add_box_rounded),
+                      color: AppColors.green,
+
+                      iconSize: 45.h,
                       onPressed: () {},
                       // onPressed: () {
                       //   context.read<ProductCubit>().addToCart(product);

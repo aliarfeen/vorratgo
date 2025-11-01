@@ -41,6 +41,7 @@ class AppTextFieldForm extends StatelessWidget {
         readOnly: isReadOnly ?? false,
         keyboardType: TextInputType.phone,
         cursorColor: AppColors.orange,
+
         obscureText: isObsecured ?? false,
         style: TextStyles.green16Reguler,
         cursorErrorColor: Colors.red,
@@ -50,19 +51,21 @@ class AppTextFieldForm extends StatelessWidget {
           isDense: true,
           filled: true,
           suffixIcon: suffixIcon,
-          suffixIconColor: AppColors.green,
+          suffixIconColor: AppColors.lightGrey,
           hintText: hintText,
           labelText: lableText,
+
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          labelStyle: TextStyles.green16Reguler.copyWith(color: AppColors.grey),
+
           hintStyle: TextStyles.green16Reguler.copyWith(color: AppColors.grey),
           contentPadding: EdgeInsets.symmetric(
             vertical: 18.h,
             horizontal: 16.w,
           ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.green, width: 1.5.w),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.grey, width: 1.3.w),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(50.r)),
+            borderSide: BorderSide.none,
           ),
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.red, width: 1.3.w),

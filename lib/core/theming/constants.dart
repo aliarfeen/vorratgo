@@ -67,7 +67,7 @@ class TextStyles {
 }
 
 class AppColors {
-  static const Color green = Color(0xFF074931);
+  static const Color green = Color(0xFF53B175);
   static const Color lightGreen = Color.fromARGB(47, 26, 255, 171);
 
   static const Color grey = Color.fromARGB(255, 58, 58, 58);

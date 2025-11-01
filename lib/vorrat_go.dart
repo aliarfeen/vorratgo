@@ -16,7 +16,7 @@ class VorratGo extends StatelessWidget {
     return BlocBuilder<ChangeLangCubit, Locale>(
       builder: (context, locale) {
         return ScreenUtilInit(
-          designSize: const Size(375, 812),
+          designSize: const Size(413.82696533203125, 896),
           minTextAdapt: true,
           splitScreenMode: true,
           builder: (ctx, child) {
@@ -31,7 +31,7 @@ class VorratGo extends StatelessWidget {
               supportedLocales: S.delegate.supportedLocales,
               title: 'Vorrat Go',
               themeMode: ThemeMode.light,
-              theme: ThemeData(primaryColor: Colors.black),
+              theme: ThemeData(primaryColor: Colors.white),
               debugShowCheckedModeBanner: false,
               initialRoute: Routes.landing,
               onGenerateRoute: appRouter.generateRoute,
