@@ -21,7 +21,7 @@ class SelectLangRow extends StatelessWidget {
               img: 'assets/svgs/united-kingdom.svg',
               onTap: () {
                 context.read<ChangeLangCubit>().setLanguage(const Locale('en'));
-                context.pushNamed(Routes.addPhoneNumber);
+                context.pushNamed(Routes.emailPasswordAuth);
               },
             ),
           ),

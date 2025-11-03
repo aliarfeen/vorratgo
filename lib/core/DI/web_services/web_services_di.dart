@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:vorratgo/core/network/api_service.dart';
 import 'package:vorratgo/core/network/dio_factory.dart';
+import 'package:vorratgo/features/authentication/cubit/firebase_email_password_auth_cubit.dart';
 import 'package:vorratgo/features/products/cubit/product_cubit.dart';
 import 'package:vorratgo/features/products/data/repository/products_repo.dart';
 import 'package:vorratgo/features/products/data/repository/products_repo_implement.dart';
@@ -28,4 +29,7 @@ Future<void> initDI() async {
 
   //Inject Cubit
   sl.registerFactory(() => ProductCubit(sl())); // sl() => ProductRepository
+
+  //
+  sl.registerFactory(() => FirebaseEmailPasswordAuthCubit());
 }

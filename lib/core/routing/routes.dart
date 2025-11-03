@@ -7,5 +7,6 @@ class Routes {
   static const String landing = '/landing';
   static const String products = '/products';
   static const String productDetails = '/productDetails';
+  static const String emailPasswordAuth = '/emailPasswordAuth';
   static const String initialRoute = '/'; // MainNavigationScreen
 }

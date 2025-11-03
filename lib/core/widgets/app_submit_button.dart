@@ -5,12 +5,21 @@ import 'package:vorratgo/core/theming/constants.dart';
 class AppSubmitionButton extends StatelessWidget {
   final void Function()? onPressed;
   final String lable;
-  AppSubmitionButton({super.key, this.onPressed, required this.lable});
+  double? width = 60.w;
+  double? height = 40.h;
+  AppSubmitionButton({
+    super.key,
+    this.onPressed,
+    required this.lable,
+    this.width,
+    this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomRight,
+    return SizedBox(
+      width: width,
+      height: height,
       child: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: AppColors.green,

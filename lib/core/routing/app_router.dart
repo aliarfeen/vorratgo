@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vorratgo/core/DI/shared_prefernces/shared_pref_di.dart';
 import 'package:vorratgo/core/widgets/main_navigation_screen.dart';
+import 'package:vorratgo/features/authentication/cubit/firebase_email_password_auth_cubit.dart';
+import 'package:vorratgo/features/authentication/presentation/pages/email_auth.dart';
 import 'package:vorratgo/features/onboarding/bloc/cubit/onboarding_cubit.dart';
 import 'package:vorratgo/features/landing/presentation/widgets/landing.dart';
 import 'package:vorratgo/features/phone_authentication/bloc/cubit/phone_auth_cubit.dart';
@@ -24,6 +26,14 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case '/selectLanguage':
         return MaterialPageRoute(builder: (_) => const SelectLanguageScreen());
+      case '/emailPasswordAuth':
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create: (context) => getIt<FirebaseEmailPasswordAuthCubit>(),
+                child: const AuthUsingEmailPage(),
+              ),
+        );
       case '/otpVerification':
         return MaterialPageRoute(
           builder:

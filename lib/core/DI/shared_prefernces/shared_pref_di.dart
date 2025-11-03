@@ -11,7 +11,7 @@ Future<void> setupLocator() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 
-  // // Register your repositories here
+  // Register your repositories here
   getIt.registerLazySingleton<OnboardingRepository>(
     () => OnboardingRepository(getIt<SharedPreferences>()),
   );
@@ -20,12 +20,12 @@ Future<void> setupLocator() async {
   );
   // getIt.registerLazySingleton<UserRepository>(() => UserRepository(getIt()));
 
-  // // Register your Cubits here, injecting their dependencies
+  // Register your Cubits here, injecting their dependencies
   getIt.registerFactory<OnboardingCubit>(
     () => OnboardingCubit(getIt<OnboardingRepository>()),
   );
   getIt.registerFactory<ChangeLangCubit>(
     () => ChangeLangCubit(getIt<SelectLangRepository>()),
   );
-  // // ... and so on for other Cubits
+  // ... and so on for other Cubits
 }

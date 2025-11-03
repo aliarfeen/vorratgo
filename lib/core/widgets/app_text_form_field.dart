@@ -39,11 +39,11 @@ class AppTextFieldForm extends StatelessWidget {
           return validator(value);
         },
         readOnly: isReadOnly ?? false,
-        keyboardType: TextInputType.phone,
+        keyboardType: keyboardType,
         cursorColor: AppColors.orange,
 
         obscureText: isObsecured ?? false,
-        style: TextStyles.green16Reguler,
+        style: TextStyles.black16Reguler,
         cursorErrorColor: Colors.red,
         obscuringCharacter: '*',
         onChanged: onChanged,
@@ -51,6 +51,7 @@ class AppTextFieldForm extends StatelessWidget {
           isDense: true,
           filled: true,
           suffixIcon: suffixIcon,
+          //suffix: IconButton(onPressed: suffixPressed, icon: Icon(suffixIcon)),
           suffixIconColor: AppColors.lightGrey,
           hintText: hintText,
           labelText: lableText,
