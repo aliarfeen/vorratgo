@@ -11,6 +11,11 @@ class ProductLoaded extends ProductState {
   ProductLoaded(this.products);
 }
 
+class ProductFiltered extends ProductState {
+  final List<Product> filteredProducts;
+  ProductFiltered(this.filteredProducts);
+}
+
 class ProductError extends ProductState {
   final String message;
   ProductError(this.message);

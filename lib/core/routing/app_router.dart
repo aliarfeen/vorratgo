@@ -73,8 +73,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder:
               (_) => BlocProvider(
-                create: (context) => getIt<ProductCubit>()..fetchProducts(),
-                child: ProductsScreen(title: args.toString()),
+                create:
+                    (context) =>
+                        getIt<ProductCubit>()..filterProducts(args.toString()),
+                child: ProductsScreen(category: args.toString()),
               ),
         );
       case '/productDetails':

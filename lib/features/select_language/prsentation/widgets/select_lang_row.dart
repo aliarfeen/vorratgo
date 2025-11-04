@@ -31,7 +31,7 @@ class SelectLangRow extends StatelessWidget {
               text: 'العربية',
               img: 'assets/svgs/egypt.svg',
               onTap: () {
-                context.read<ChangeLangCubit>().setLanguage(const Locale('ar'));
+                context.read<ChangeLangCubit>().setLanguage(const Locale('en'));
                 context.pushNamed(Routes.addPhoneNumber);
               },
             ),

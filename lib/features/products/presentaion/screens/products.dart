@@ -3,18 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vorratgo/core/helpers/extensions.dart';
 import 'package:vorratgo/features/products/cubit/product_cubit.dart';
 import 'package:vorratgo/features/products/cubit/product_state.dart';
+import 'package:vorratgo/features/products/data/model/product_model.dart';
 import 'package:vorratgo/features/products/presentaion/widgets/products_grid.dart';
 
 class ProductsScreen extends StatelessWidget {
-  final String title;
-  ProductsScreen({super.key, required this.title});
+  final String category;
+  ProductsScreen({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(title),
+          title: Text(category),
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.tune))],
           leading: IconButton(
             onPressed: () => context.pop(),
@@ -30,6 +31,11 @@ class ProductsScreen extends StatelessWidget {
               return ProductsGrid(
                 itemCount: state.products.length,
                 products: state.products,
+              );
+            } else if (state is ProductFiltered) {
+              return ProductsGrid(
+                itemCount: state.filteredProducts.length,
+                products: state.filteredProducts,
               );
             } else if (state is ProductError) {
               return Center(child: Text('Error: ${state.message}'));

@@ -7,7 +7,7 @@ import 'package:vorratgo/core/theming/constants.dart';
 import 'package:vorratgo/features/products/data/model/product_model.dart';
 
 class ProductsGrid extends StatelessWidget {
-  final int itemCount; // Replace with the actual item count
+  final int itemCount;
   final List<Product> products;
   ProductsGrid({super.key, required this.itemCount, required this.products});
 
@@ -23,7 +23,7 @@ class ProductsGrid extends StatelessWidget {
         crossAxisSpacing: 10.0,
         mainAxisSpacing: 10.0,
       ),
-      itemCount: itemCount, // Replace with the actual item count
+      itemCount: itemCount,
       itemBuilder: (context, index) {
         final product = products[index];
         return InkWell(
