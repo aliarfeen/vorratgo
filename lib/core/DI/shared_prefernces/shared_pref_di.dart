@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vorratgo/core/cubits/cubit/change_lang_cubit.dart';
+import 'package:vorratgo/core/cubits/change_lang_cubit/change_lang_cubit.dart';
 import 'package:vorratgo/core/data/select_lang_repository.dart';
 import 'package:vorratgo/features/onboarding/bloc/cubit/onboarding_cubit.dart';
 import 'package:vorratgo/features/onboarding/data/repositories/onboarding_repository.dart';

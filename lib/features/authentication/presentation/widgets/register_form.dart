@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vorratgo/core/widgets/app_submit_button.dart';
 import 'package:vorratgo/core/widgets/app_text_form_field.dart';
-import 'package:vorratgo/features/authentication/cubit/firebase_email_password_auth_cubit.dart';
+import 'package:vorratgo/core/cubits/user_auth_cubit/firebase_email_password_auth_cubit.dart';
 import 'package:vorratgo/features/authentication/presentation/widgets/terms_widget.dart';
 
 class AuthRegisterForm extends StatefulWidget {

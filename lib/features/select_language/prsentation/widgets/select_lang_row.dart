@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vorratgo/core/cubits/cubit/change_lang_cubit.dart';
+import 'package:vorratgo/core/cubits/change_lang_cubit/change_lang_cubit.dart';
 import 'package:vorratgo/core/helpers/extensions.dart';
 import 'package:vorratgo/core/helpers/spacers.dart';
 import 'package:vorratgo/core/routing/routes.dart';

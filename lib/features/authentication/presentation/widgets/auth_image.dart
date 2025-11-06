@@ -27,9 +27,9 @@ class AuthImage extends StatelessWidget {
 
               // Blur layer
               BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 60, sigmaY: 60),
+                filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
                 child: Container(
-                  color: Colors.white.withAlpha(60), // adds white fade
+                  color: Colors.white.withAlpha(3), // adds white fade
                 ),
               ),
             ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:vorratgo/core/cubits/cubit/change_lang_cubit.dart';
+import 'package:vorratgo/core/cubits/change_lang_cubit/change_lang_cubit.dart';
 import 'package:vorratgo/core/routing/app_router.dart';
 import 'package:vorratgo/core/routing/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
