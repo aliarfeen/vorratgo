@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vorratgo/core/widgets/app_submit_button.dart';
 import 'package:vorratgo/core/widgets/app_text_form_field.dart';
 import 'package:vorratgo/features/authentication/cubit/firebase_email_password_auth_cubit.dart';
+import 'package:vorratgo/features/authentication/presentation/widgets/terms_widget.dart';
 
 class AuthRegisterForm extends StatefulWidget {
   AuthRegisterForm({super.key});
@@ -38,6 +39,29 @@ class _AuthRegisterFormState extends State<AuthRegisterForm> {
       child: Column(
         children: [
           AppTextFieldForm(
+            padding: EdgeInsets.only(bottom: 16.h),
+            controller:
+                context.read<FirebaseEmailPasswordAuthCubit>().emailController,
+            keyboardType: TextInputType.emailAddress,
+            isEnabled: true,
+            onChanged: (value) {},
+            lableText: 'User Name',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Name is required";
+              }
+              if (value.length < 3) {
+                return "Name must be at least 3 characters";
+              }
+              if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(value)) {
+                return "Name can only contain letters and spaces";
+              }
+              return null;
+            },
+            hintText: 'mohamed@gmail.com',
+          ),
+          AppTextFieldForm(
+            padding: EdgeInsets.only(bottom: 16.h),
             controller:
                 context.read<FirebaseEmailPasswordAuthCubit>().emailController,
             keyboardType: TextInputType.emailAddress,
@@ -56,6 +80,7 @@ class _AuthRegisterFormState extends State<AuthRegisterForm> {
             hintText: 'mohamed@gmail.com',
           ),
           AppTextFieldForm(
+            padding: EdgeInsets.only(bottom: 5.h),
             suffixIcon:
                 _isPasswordVisible
                     ? IconButton(
@@ -87,10 +112,11 @@ class _AuthRegisterFormState extends State<AuthRegisterForm> {
             validator: (value) => passwordValidator(value),
             hintText: '***************',
           ),
+          TermsText(),
           AppSubmitionButton(
             width: 364.w,
             height: 67.h,
-            lable: 'Log In',
+            lable: 'Register',
             onPressed: () {
               final cubit = context.read<FirebaseEmailPasswordAuthCubit>();
               if (cubit.logInFormKey.currentState!.validate()) {

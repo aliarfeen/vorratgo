@@ -35,6 +35,7 @@ class PhoneNumberFieldRow extends StatelessWidget {
           Expanded(
             flex: 3,
             child: AppTextFieldForm(
+              padding: EdgeInsets.zero,
               controller: context.read<PhoneAuthCubit>().phoneNumberController,
               isEnabled: true,
               onChanged: (value) {

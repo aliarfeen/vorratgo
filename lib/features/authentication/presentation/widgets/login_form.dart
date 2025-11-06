@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vorratgo/core/theming/constants.dart';
 import 'package:vorratgo/core/widgets/app_submit_button.dart';
 import 'package:vorratgo/core/widgets/app_text_form_field.dart';
 import 'package:vorratgo/features/authentication/cubit/firebase_email_password_auth_cubit.dart';
@@ -38,6 +39,7 @@ class _AuthLoginFormState extends State<AuthLoginForm> {
       child: Column(
         children: [
           AppTextFieldForm(
+            padding: EdgeInsets.only(bottom: 16.h),
             controller:
                 context.read<FirebaseEmailPasswordAuthCubit>().emailController,
             keyboardType: TextInputType.emailAddress,
@@ -56,6 +58,7 @@ class _AuthLoginFormState extends State<AuthLoginForm> {
             hintText: 'mohamed@gmail.com',
           ),
           AppTextFieldForm(
+            padding: EdgeInsets.zero,
             suffixIcon:
                 _isPasswordVisible
                     ? IconButton(
@@ -87,10 +90,22 @@ class _AuthLoginFormState extends State<AuthLoginForm> {
             validator: (value) => passwordValidator(value),
             hintText: '***************',
           ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton(
+              onPressed: () {},
+              child: Text('Forgot Password?'),
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.only(right: 16.w),
+                textStyle: TextStyles.black16Reguler,
+              ),
+            ),
+          ),
           AppSubmitionButton(
             width: 364.w,
             height: 67.h,
             lable: 'Log In',
+
             onPressed: () {
               final cubit = context.read<FirebaseEmailPasswordAuthCubit>();
               if (cubit.logInFormKey.currentState!.validate()) {

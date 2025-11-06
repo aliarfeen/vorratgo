@@ -31,7 +31,7 @@ class AppRouter {
           builder:
               (_) => BlocProvider(
                 create: (context) => getIt<FirebaseEmailPasswordAuthCubit>(),
-                child: const AuthUsingEmailPage(),
+                child: AuthUsingEmailPage(),
               ),
         );
       case '/otpVerification':

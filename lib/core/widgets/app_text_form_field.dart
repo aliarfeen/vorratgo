@@ -14,6 +14,7 @@ class AppTextFieldForm extends StatelessWidget {
   final Function(String?) validator;
   final Function(String)? onChanged;
   final TextEditingController? controller;
+  final EdgeInsetsGeometry padding;
 
   const AppTextFieldForm({
     super.key,
@@ -27,12 +28,13 @@ class AppTextFieldForm extends StatelessWidget {
     this.controller,
     this.isObsecured,
     this.suffixIcon,
+    required this.padding,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 16.0.h),
+      padding: padding,
       child: TextFormField(
         controller: controller,
         validator: (value) {

@@ -25,7 +25,7 @@ class AppSubmitionButton extends StatelessWidget {
           backgroundColor: AppColors.green,
           padding: EdgeInsets.symmetric(vertical: 16.0.h, horizontal: 32.0.w),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0.r),
+            borderRadius: BorderRadius.circular(19.0.r),
           ),
         ),
         onPressed:
@@ -34,7 +34,10 @@ class AppSubmitionButton extends StatelessWidget {
               // Default action if no onPressed is provided
               print("Submit button pressed");
             },
-        child: Text(lable, style: TextStyles.white16Bold),
+        child: Text(
+          lable,
+          style: TextStyles.white16Bold.copyWith(fontSize: 18.sp),
+        ),
       ),
     );
   }

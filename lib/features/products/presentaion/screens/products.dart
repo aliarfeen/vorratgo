@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vorratgo/core/helpers/extensions.dart';
 import 'package:vorratgo/features/products/cubit/product_cubit.dart';
 import 'package:vorratgo/features/products/cubit/product_state.dart';
-import 'package:vorratgo/features/products/data/model/product_model.dart';
 import 'package:vorratgo/features/products/presentaion/widgets/products_grid.dart';
 
 class ProductsScreen extends StatelessWidget {
