@@ -8,5 +8,6 @@ class Routes {
   static const String products = '/products';
   static const String productDetails = '/productDetails';
   static const String emailPasswordAuth = '/emailPasswordAuth';
+  static const String authGate = '/authGate';
   static const String initialRoute = '/'; // MainNavigationScreen
 }
