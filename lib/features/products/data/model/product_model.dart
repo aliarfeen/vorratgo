@@ -9,7 +9,8 @@ class Product {
   final String imgUri;
   final double price;
   final String unit;
-  final bool available;
+  final int stockLevel;
+  final int committedStock;
 
   Product({
     required this.id,
@@ -19,7 +20,8 @@ class Product {
     required this.imgUri,
     required this.price,
     required this.unit,
-    required this.available,
+    required this.stockLevel,
+    required this.committedStock,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -31,7 +33,8 @@ class Product {
       imgUri: json['img_uri'] as String,
       price: (json['price'] as num).toDouble(),
       unit: json['unit'] as String,
-      available: json['available'] as bool,
+      stockLevel: json['stock_level'] as int,
+      committedStock: json['committed_stock'] as int,
     );
   }
 
@@ -44,7 +47,8 @@ class Product {
       'img_uri': imgUri,
       'price': price,
       'unit': unit,
-      'available': available,
+      'stock_level': stockLevel,
+      'committed_stock': committedStock,
     };
   }
 }

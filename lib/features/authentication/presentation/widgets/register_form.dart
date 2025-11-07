@@ -17,7 +17,7 @@ class _AuthRegisterFormState extends State<AuthRegisterForm> {
   bool _isPasswordVisible = false;
 
   //----------------------------------password validation------------
-  String passwordValidator(String? value) {
+  String? passwordValidator(String? value) {
     if (value == null || value.isEmpty) {
       return "Password is required";
     }
@@ -29,19 +29,21 @@ class _AuthRegisterFormState extends State<AuthRegisterForm> {
     ).hasMatch(value)) {
       return "Password must contain uppercase, lowercase, number and special character";
     }
-    return '';
+    return null;
   }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<FirebaseEmailPasswordAuthCubit>().logInFormKey,
+      key: context.read<FirebaseEmailPasswordAuthCubit>().registerFormKey,
       child: Column(
         children: [
           AppTextFieldForm(
             padding: EdgeInsets.only(bottom: 16.h),
             controller:
-                context.read<FirebaseEmailPasswordAuthCubit>().emailController,
+                context
+                    .read<FirebaseEmailPasswordAuthCubit>()
+                    .usernameController,
             keyboardType: TextInputType.emailAddress,
             isEnabled: true,
             onChanged: (value) {},
@@ -58,7 +60,7 @@ class _AuthRegisterFormState extends State<AuthRegisterForm> {
               }
               return null;
             },
-            hintText: 'mohamed@gmail.com',
+            hintText: 'Ali Hesham',
           ),
           AppTextFieldForm(
             padding: EdgeInsets.only(bottom: 16.h),
@@ -119,12 +121,9 @@ class _AuthRegisterFormState extends State<AuthRegisterForm> {
             lable: 'Register',
             onPressed: () {
               final cubit = context.read<FirebaseEmailPasswordAuthCubit>();
-              if (cubit.logInFormKey.currentState!.validate()) {
+              if (cubit.registerFormKey.currentState!.validate()) {
                 //TODO: handle
-                cubit.register(
-                  cubit.emailController.text,
-                  cubit.passwordController.text,
-                );
+                cubit.register();
               }
             },
           ),

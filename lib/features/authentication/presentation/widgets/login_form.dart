@@ -17,7 +17,7 @@ class _AuthLoginFormState extends State<AuthLoginForm> {
   bool _isPasswordVisible = false;
 
   //----------------------------------password validation------------
-  String passwordValidator(String? value) {
+  String? passwordValidator(String? value) {
     if (value == null || value.isEmpty) {
       return "Password is required";
     }
@@ -29,13 +29,13 @@ class _AuthLoginFormState extends State<AuthLoginForm> {
     ).hasMatch(value)) {
       return "Password must contain uppercase, lowercase, number and special character";
     }
-    return '';
+    return null;
   }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<FirebaseEmailPasswordAuthCubit>().logInFormKey,
+      key: context.read<FirebaseEmailPasswordAuthCubit>().loginFormKey,
       child: Column(
         children: [
           AppTextFieldForm(
@@ -108,12 +108,9 @@ class _AuthLoginFormState extends State<AuthLoginForm> {
 
             onPressed: () {
               final cubit = context.read<FirebaseEmailPasswordAuthCubit>();
-              if (cubit.logInFormKey.currentState!.validate()) {
+              if (cubit.loginFormKey.currentState!.validate()) {
                 //TODO: handle
-                cubit.login(
-                  cubit.emailController.text,
-                  cubit.passwordController.text,
-                );
+                cubit.login();
               }
             },
           ),

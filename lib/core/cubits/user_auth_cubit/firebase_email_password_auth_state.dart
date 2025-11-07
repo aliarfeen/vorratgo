@@ -1,37 +1,47 @@
 part of 'firebase_email_password_auth_cubit.dart';
 
-sealed class FirebaseEmailPasswordAuthState extends Equatable {
-  const FirebaseEmailPasswordAuthState();
+abstract class FirebaseEmailPasswordAuthState extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
+
+class FirebaseEmailPasswordAuthInitial extends FirebaseEmailPasswordAuthState {}
+
+class FirebaseEmailPasswordRegisterLoading
+    extends FirebaseEmailPasswordAuthState {}
+
+class FirebaseEmailPasswordRegisterSuccess
+    extends FirebaseEmailPasswordAuthState {}
+
+class FirebaseEmailPasswordRegisterFailure
+    extends FirebaseEmailPasswordAuthState {
+  final String message;
+  FirebaseEmailPasswordRegisterFailure(this.message);
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [message];
 }
 
-final class FirebaseEmailPasswordAuthInitial
+class FirebaseEmailPasswordLogInLoading
     extends FirebaseEmailPasswordAuthState {}
 
-final class FirebaseEmailPasswordRegisterLoading
-    extends FirebaseEmailPasswordAuthState {}
+class FirebaseEmailPasswordLogInSuccess extends FirebaseEmailPasswordAuthState {
+  final UserModel user;
+  FirebaseEmailPasswordLogInSuccess(this.user);
 
-final class FirebaseEmailPasswordRegisterSuccess
-    extends FirebaseEmailPasswordAuthState {}
+  @override
+  List<Object?> get props => [user];
+}
 
-final class FirebaseEmailPasswordRegisterFailure
-    extends FirebaseEmailPasswordAuthState {
+class FirebaseEmailPasswordLogInFailure extends FirebaseEmailPasswordAuthState {
   final String message;
-  const FirebaseEmailPasswordRegisterFailure(this.message);
+  FirebaseEmailPasswordLogInFailure(this.message);
+
+  @override
+  List<Object?> get props => [message];
 }
 
-//-----------------------login states-----------------
+class FirebaseEmailPasswordSignOut extends FirebaseEmailPasswordAuthState {}
 
-final class FirebaseEmailPasswordLogInLoading
+class FirebaseEmailPasswordAuthPasswordVisibilityChanged
     extends FirebaseEmailPasswordAuthState {}
-
-final class FirebaseEmailPasswordLogInSuccess
-    extends FirebaseEmailPasswordAuthState {}
-
-final class FirebaseEmailPasswordLogInFailure
-    extends FirebaseEmailPasswordAuthState {
-  final String message;
-  const FirebaseEmailPasswordLogInFailure(this.message);
-}

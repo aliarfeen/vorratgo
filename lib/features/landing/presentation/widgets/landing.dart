@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vorratgo/core/widgets/main_navigation_screen.dart';
 import 'package:vorratgo/features/onboarding/bloc/cubit/onboarding_cubit.dart';
 import 'package:vorratgo/features/onboarding/presentaion/screens/onboarding.dart';
 import 'package:vorratgo/features/select_language/prsentation/screens/select_lang.dart';

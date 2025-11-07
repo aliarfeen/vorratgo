@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:vorratgo/core/data/select_lang_repository.dart';
+import 'package:vorratgo/core/data/repository/select_lang_repository.dart';
 
 class ChangeLangCubit extends Cubit<Locale> {
   final SelectLangRepository _languageRepository;

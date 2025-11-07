@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vorratgo/bloc_observer.dart';
 import 'package:vorratgo/core/DI/shared_prefernces/shared_pref_di.dart';
 import 'package:vorratgo/core/DI/web_services/web_services_di.dart';
 import 'package:vorratgo/core/cubits/change_lang_cubit/change_lang_cubit.dart';
@@ -20,6 +21,8 @@ void main() async {
   await setupLocator();
   await initDI();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  Bloc.observer = AppBlocObserver();
   runApp(
     BlocProvider(
       create: (context) => getIt<ChangeLangCubit>(),

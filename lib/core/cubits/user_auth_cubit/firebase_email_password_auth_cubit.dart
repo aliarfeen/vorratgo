@@ -1,71 +1,76 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:vorratgo/core/data/model/user.dart';
+import 'package:vorratgo/core/data/repository/user_repository.dart';
 
 part 'firebase_email_password_auth_state.dart';
 
 class FirebaseEmailPasswordAuthCubit
     extends Cubit<FirebaseEmailPasswordAuthState> {
-  final GlobalKey<FormState> logInFormKey = GlobalKey<FormState>();
+  final UserRepository userRepository;
+
+  FirebaseEmailPasswordAuthCubit(this.userRepository)
+    : super(FirebaseEmailPasswordAuthInitial());
+
+  final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
-  final TextEditingController usernameController = TextEditingController();
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  final usernameController = TextEditingController();
 
   bool isPasswordVisible = false;
 
-  FirebaseEmailPasswordAuthCubit() : super(FirebaseEmailPasswordAuthInitial());
+  Future<void> register() async {
+    if (!registerFormKey.currentState!.validate()) return;
 
-  //-----------------Register-------------------------------------------
-  void register(String emailAddress, String password) async {
+    emit(FirebaseEmailPasswordRegisterLoading());
     try {
-      emit(FirebaseEmailPasswordRegisterLoading());
-      final credential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-            email: emailAddress,
-            password: password,
-          );
+      await userRepository.registerUser(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+        username: usernameController.text.trim(),
+      );
       emit(FirebaseEmailPasswordRegisterSuccess());
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-        emit(FirebaseEmailPasswordRegisterFailure(e.toString()));
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-        emit(FirebaseEmailPasswordRegisterFailure(e.toString()));
-      }
     } catch (e) {
       emit(FirebaseEmailPasswordRegisterFailure(e.toString()));
     }
   }
 
-  //-----------------------login--------------------------
-  void login(String emailAddress, String password) async {
-    try {
-      emit(FirebaseEmailPasswordLogInLoading());
+  Future<void> login() async {
+    if (!loginFormKey.currentState!.validate()) return;
 
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailAddress,
-        password: password,
+    emit(FirebaseEmailPasswordLogInLoading());
+    try {
+      final data = await userRepository.loginUser(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
       );
-      emit(FirebaseEmailPasswordLogInSuccess());
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        emit(FirebaseEmailPasswordLogInFailure(e.toString()));
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-        emit(FirebaseEmailPasswordLogInFailure(e.toString()));
+
+      if (data != null) {
+        final user = UserModel.fromMap(data);
+        emit(FirebaseEmailPasswordLogInSuccess(user));
+      } else {
+        emit(FirebaseEmailPasswordLogInFailure('User data not found'));
       }
     } catch (e) {
       emit(FirebaseEmailPasswordLogInFailure(e.toString()));
     }
   }
 
-  //--------------------------sign out ------------------------------
-  void signOut() async {
-    await FirebaseAuth.instance.signOut();
+  Future<void> signOut() async {
+    await userRepository.signOut();
+    emit(FirebaseEmailPasswordSignOut());
+  }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    usernameController.dispose();
+    return super.close();
   }
 }
