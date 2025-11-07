@@ -18,70 +18,67 @@ class _AuthUsingEmailPageState extends State<AuthUsingEmailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 32.0,
-            ),
-            child: Column(
-              children: [
-                AuthImage(),
-                verticalSpacer(30.h),
-                _isRegister
-                    ? ListTile(
-                      minTileHeight: 60.h,
-                      title: Text(
-                        'Sign Up',
-                        style: TextStyles.black20Bold.copyWith(fontSize: 26.sp),
-                      ),
-
-                      subtitle: Text(
-                        'Enter your credentials to continue',
-                        style: TextStyles.grey16Regular,
-                      ),
-                    )
-                    : ListTile(
-                      minTileHeight: 60.h,
-                      title: Text(
-                        'Login',
-                        style: TextStyles.black20Bold.copyWith(fontSize: 26.sp),
-                      ),
-
-                      subtitle: Text(
-                        'Enter your email and password',
-                        style: TextStyles.grey16Regular,
-                      ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 32.0),
+          child: Column(
+            children: [
+              AuthImage(),
+              verticalSpacer(30.h),
+              _isRegister
+                  ? ListTile(
+                    minTileHeight: 60.h,
+                    title: Text(
+                      'Sign Up',
+                      style: TextStyles.black20Bold.copyWith(fontSize: 26.sp),
                     ),
 
-                verticalSpacer(30.h),
-                _isRegister ? AuthRegisterForm() : AuthLoginForm(),
+                    subtitle: Text(
+                      'Enter your credentials to continue',
+                      style: TextStyles.grey16Regular,
+                    ),
+                  )
+                  : ListTile(
+                    minTileHeight: 60.h,
+                    title: Text(
+                      'Login',
+                      style: TextStyles.black20Bold.copyWith(fontSize: 26.sp),
+                    ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      _isRegister
-                          ? 'Already have an account?'
-                          : 'Don’t have an account?',
+                    subtitle: Text(
+                      'Enter your email and password',
+                      style: TextStyles.grey16Regular,
                     ),
-                    TextButton(
-                      child: Text(
-                        _isRegister ? 'Login' : 'Singup',
-                        style: TextStyles.green16Bold,
-                      ),
-                      onPressed: () {
-                        _isRegister = !_isRegister;
-                        setState(() {});
-                      },
+                  ),
+
+              verticalSpacer(30.h),
+              _isRegister
+                  ? AuthRegisterForm(register: _isRegister)
+                  : AuthLoginForm(),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    _isRegister
+                        ? 'Already have an account?'
+                        : 'Don’t have an account?',
+                  ),
+                  TextButton(
+                    child: Text(
+                      _isRegister ? 'Login' : 'Singup',
+                      style: TextStyles.green16Bold,
                     ),
-                  ],
-                ),
-              ],
-            ),
+                    onPressed: () {
+                      _isRegister = !_isRegister;
+                      setState(() {});
+                    },
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

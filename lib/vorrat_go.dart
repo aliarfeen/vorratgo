@@ -33,7 +33,7 @@ class VorratGo extends StatelessWidget {
               themeMode: ThemeMode.dark,
               theme: ThemeData(primaryColor: Colors.grey),
               debugShowCheckedModeBanner: false,
-              initialRoute: Routes.landing,
+              initialRoute: Routes.authGate,
               onGenerateRoute: appRouter.generateRoute,
             );
           },

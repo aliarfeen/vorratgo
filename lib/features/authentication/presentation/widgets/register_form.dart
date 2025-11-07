@@ -7,7 +7,8 @@ import 'package:vorratgo/core/cubits/user_auth_cubit/firebase_email_password_aut
 import 'package:vorratgo/features/authentication/presentation/widgets/terms_widget.dart';
 
 class AuthRegisterForm extends StatefulWidget {
-  AuthRegisterForm({super.key});
+  bool register = true;
+  AuthRegisterForm({super.key, required this.register});
 
   @override
   State<AuthRegisterForm> createState() => _AuthRegisterFormState();
@@ -15,6 +16,13 @@ class AuthRegisterForm extends StatefulWidget {
 
 class _AuthRegisterFormState extends State<AuthRegisterForm> {
   bool _isPasswordVisible = false;
+  bool register = true;
+
+  @override
+  void initState() {
+    super.initState();
+    register = this.register;
+  }
 
   //----------------------------------password validation------------
   String? passwordValidator(String? value) {
@@ -124,6 +132,8 @@ class _AuthRegisterFormState extends State<AuthRegisterForm> {
               if (cubit.registerFormKey.currentState!.validate()) {
                 //TODO: handle
                 cubit.register();
+                register = false;
+                cubit.registerFormKey.currentState!.reset();
               }
             },
           ),

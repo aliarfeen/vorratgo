@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vorratgo/core/helpers/extensions.dart';
+import 'package:vorratgo/core/routing/routes.dart';
 import 'package:vorratgo/core/theming/constants.dart';
 import 'package:vorratgo/core/widgets/app_submit_button.dart';
 import 'package:vorratgo/core/widgets/app_text_form_field.dart';
@@ -34,14 +36,14 @@ class _AuthLoginFormState extends State<AuthLoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<FirebaseEmailPasswordAuthCubit>();
     return Form(
-      key: context.read<FirebaseEmailPasswordAuthCubit>().loginFormKey,
+      key: cubit.loginFormKey,
       child: Column(
         children: [
           AppTextFieldForm(
             padding: EdgeInsets.only(bottom: 16.h),
-            controller:
-                context.read<FirebaseEmailPasswordAuthCubit>().emailController,
+            controller: cubit.emailController,
             keyboardType: TextInputType.emailAddress,
             isEnabled: true,
             onChanged: (value) {},
@@ -77,10 +79,7 @@ class _AuthLoginFormState extends State<AuthLoginForm> {
                       },
                       icon: Icon(Icons.visibility),
                     ),
-            controller:
-                context
-                    .read<FirebaseEmailPasswordAuthCubit>()
-                    .passwordController,
+            controller: cubit.passwordController,
             keyboardType: TextInputType.visiblePassword,
             isObsecured: _isPasswordVisible ? false : true,
             isReadOnly: false,
@@ -101,18 +100,32 @@ class _AuthLoginFormState extends State<AuthLoginForm> {
               ),
             ),
           ),
-          AppSubmitionButton(
-            width: 364.w,
-            height: 67.h,
-            lable: 'Log In',
-
-            onPressed: () {
-              final cubit = context.read<FirebaseEmailPasswordAuthCubit>();
-              if (cubit.loginFormKey.currentState!.validate()) {
-                //TODO: handle
-                cubit.login();
+          BlocListener<
+            FirebaseEmailPasswordAuthCubit,
+            FirebaseEmailPasswordAuthState
+          >(
+            listener: (context, state) {
+              // TODO: implement listener
+              if (state is FirebaseEmailPasswordLogInSuccess) {
+                context.pushReplacementNamed(Routes.initialRoute);
+              } else if (state is FirebaseEmailPasswordLogInFailure) {
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text(state.message)));
               }
             },
+            child: AppSubmitionButton(
+              width: 364.w,
+              height: 67.h,
+              lable: 'Log In',
+
+              onPressed: () {
+                if (cubit.loginFormKey.currentState!.validate()) {
+                  //? performing login using cubit according to current state
+                  cubit.login();
+                }
+              },
+            ),
           ),
         ],
       ),
