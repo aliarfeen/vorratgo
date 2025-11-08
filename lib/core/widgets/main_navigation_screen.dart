@@ -14,14 +14,12 @@ class MainNavigationScreen extends StatefulWidget {
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(
-    fontSize: 30,
-    fontWeight: FontWeight.w600,
-  );
+  static const TextStyle optionStyle = TextStyle(fontSize: 18);
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     Text('Search', style: optionStyle),
     Text('cart', style: optionStyle),
+    Text('favorits', style: optionStyle),
     ProfileCenter(),
   ];
 
@@ -46,10 +44,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             child: GNav(
               rippleColor: Colors.grey[300]!,
               hoverColor: Colors.grey[100]!,
-              gap: 8,
+              gap: 5.w,
               activeColor: AppColors.green,
-              iconSize: 30,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              iconSize: 25.dm,
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               duration: Duration(milliseconds: 200),
               tabBackgroundColor: Colors.grey[100]!,
               color: AppColors.grey,
@@ -63,7 +61,12 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                   leading: Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      const Icon(LineIcons.shoppingBasket, size: 30),
+                      Icon(
+                        LineIcons.shoppingBasket,
+                        size: 25,
+                        color:
+                            _selectedIndex == 2 ? Colors.green : Colors.black,
+                      ),
                       Positioned(
                         right: -4,
                         top: -4,
@@ -93,6 +96,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                     ],
                   ),
                 ),
+                GButton(
+                  icon: Icons.favorite_border_outlined,
+                  text: S.of(context).bakery,
+                ),
+
                 GButton(icon: LineIcons.user, text: S.of(context).profile),
               ],
               selectedIndex: _selectedIndex,

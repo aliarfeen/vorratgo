@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vorratgo/core/DI/shared_prefernces/shared_pref_di.dart';
+import 'package:vorratgo/core/DI/shared_prefernces/localization_di.dart';
 import 'package:vorratgo/core/widgets/main_navigation_screen.dart';
 import 'package:vorratgo/core/cubits/user_auth_cubit/firebase_email_password_auth_cubit.dart';
 import 'package:vorratgo/features/authentication/presentation/pages/auth_gate.dart';
