@@ -17,4 +17,8 @@ class UserProfileCenterCubit extends Cubit<UserProfileCenterState> {
       emit(UserProfileError('No user data found'));
     }
   }
+
+  void logOut() {
+    localRepo.clearAll();
+  }
 }

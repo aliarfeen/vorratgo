@@ -60,6 +60,38 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 GButton(
                   icon: LineIcons.shoppingBasket,
                   text: S.of(context).cart,
+                  leading: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      const Icon(LineIcons.shoppingBasket, size: 30),
+                      Positioned(
+                        right: -4,
+                        top: -4,
+                        child: Container(
+                          padding: const EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                            color: AppColors.green,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white, width: 1.5),
+                          ),
+                          constraints: const BoxConstraints(
+                            minWidth: 18,
+                            minHeight: 18,
+                          ),
+                          child: const Center(
+                            child: Text(
+                              '2',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 GButton(icon: LineIcons.user, text: S.of(context).profile),
               ],

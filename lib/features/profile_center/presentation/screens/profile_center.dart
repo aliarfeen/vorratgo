@@ -1,8 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vorratgo/core/DI/web_services/web_services_di.dart';
+import 'package:vorratgo/core/cubits/user_auth_cubit/firebase_email_password_auth_cubit.dart';
 import 'package:vorratgo/core/theming/constants.dart';
+import 'package:vorratgo/core/widgets/app_submit_button.dart';
 import 'package:vorratgo/features/profile_center/cubit/user_center_cubit.dart';
 import 'package:vorratgo/features/profile_center/presentation/widgets/profile_menu_item.dart';
 
@@ -104,29 +105,52 @@ class ProfileCenter extends StatelessWidget {
                   ),
 
                   // --- Logout Button ---
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(
+                  //     horizontal: 16,
+                  //     vertical: 12,
+                  //   ),
+                  //   child: ElevatedButton.icon(
+                  //     onPressed: () {},
+                  //     icon: const Icon(Icons.logout, color: Colors.green),
+                  //     label: const Text(
+                  //       'Log Out',
+                  //       style: TextStyle(
+                  //         color: Colors.green,
+                  //         fontWeight: FontWeight.w600,
+                  //       ),
+                  //     ),
+                  //     style: ElevatedButton.styleFrom(
+                  //       backgroundColor: const Color(0xffF6F6F6),
+                  //       elevation: 0,
+                  //       minimumSize: const Size(double.infinity, 50),
+                  //       shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(12),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16,
                       vertical: 12,
                     ),
-                    child: ElevatedButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(Icons.logout, color: Colors.green),
-                      label: const Text(
-                        'Log Out',
-                        style: TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xffF6F6F6),
-                        elevation: 0,
-                        minimumSize: const Size(double.infinity, 50),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
+                    child: AppSubmitionButton(
+                      color: AppColors.lightGrey,
+                      textColor: AppColors.green,
+                      lable: 'Log Out',
+                      width: double.infinity,
+                      height: 55,
+
+                      onPressed: () {
+                        sl<UserProfileCenterCubit>().logOut();
+                        sl<FirebaseEmailPasswordAuthCubit>().signOut();
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          '/authGate',
+                          (route) => false,
+                        );
+                      },
                     ),
                   ),
                 ],

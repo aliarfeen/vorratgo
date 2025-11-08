@@ -54,13 +54,9 @@ class FirebaseEmailPasswordAuthCubit
       final userModel = UserModel.fromMap(data!);
       await localRepo.saveUser(userModel);
 
-      if (data != null) {
-        final user = UserModel.fromMap(data);
+      final user = UserModel.fromMap(data);
 
-        emit(FirebaseEmailPasswordLogInSuccess(user));
-      } else {
-        emit(FirebaseEmailPasswordLogInFailure('User data not found'));
-      }
+      emit(FirebaseEmailPasswordLogInSuccess(user));
     } catch (e) {
       emit(FirebaseEmailPasswordLogInFailure(e.toString()));
     }

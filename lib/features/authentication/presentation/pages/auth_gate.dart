@@ -4,8 +4,8 @@ import 'package:vorratgo/core/DI/web_services/web_services_di.dart';
 import 'package:vorratgo/core/data/repository/local_repository.dart';
 import 'package:vorratgo/core/helpers/spacers.dart';
 import 'package:vorratgo/core/widgets/app_submit_button.dart';
+import 'package:vorratgo/core/widgets/main_navigation_screen.dart';
 import 'package:vorratgo/features/authentication/presentation/widgets/auth_image.dart';
-import 'package:vorratgo/features/home/presentation/screens/home.dart';
 
 class AuthGatePage extends StatelessWidget {
   const AuthGatePage({super.key});
@@ -16,7 +16,7 @@ class AuthGatePage extends StatelessWidget {
     final user = localRepo.getUser();
 
     if (user != null) {
-      return const HomeScreen();
+      return MainNavigationScreen();
     }
 
     return Scaffold(
