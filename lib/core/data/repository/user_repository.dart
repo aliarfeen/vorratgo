@@ -9,7 +9,7 @@ abstract class UserRepository {
     required String email,
     required String password,
   });
-
+  Future<Map<String, dynamic>?> updateUserData(String uid);
   Future<Map<String, dynamic>?> fetchUserData(String uid);
 
   Future<void> signOut();

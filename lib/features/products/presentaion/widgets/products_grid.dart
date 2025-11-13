@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vorratgo/core/cubits/cart_cubit/cart_cubit.dart';
+import 'package:vorratgo/core/data/model/cart_item.dart';
 import 'package:vorratgo/core/helpers/extensions.dart';
 import 'package:vorratgo/core/helpers/spacers.dart';
 import 'package:vorratgo/core/routing/routes.dart';
@@ -25,6 +28,7 @@ class ProductsGrid extends StatelessWidget {
       ),
       itemCount: itemCount,
       itemBuilder: (context, index) {
+        final CartCubit cubit = context.read<CartCubit>();
         final product = products[index];
         return InkWell(
           onTap: () {
@@ -88,7 +92,24 @@ class ProductsGrid extends StatelessWidget {
                       color: AppColors.green,
 
                       iconSize: 45.h,
-                      onPressed: () {},
+                      onPressed: () {
+                        final cartItem = CartItem(
+                          productId: product.id,
+                          quantity: '1',
+                          price: product.price.toDouble(),
+                          imgUri: product.imgUri,
+                          name: product.name.en,
+                        );
+                        cubit.addToCart(cartItem);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              '${Localizations.localeOf(context).languageCode == 'ar' ? product.name.ar : product.name.en} added to cart',
+                            ),
+                            duration: const Duration(seconds: 2),
+                          ),
+                        );
+                      },
                       // onPressed: () {
                       //   context.read<ProductCubit>().addToCart(product);
                       // },

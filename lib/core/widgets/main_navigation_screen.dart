@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:vorratgo/core/cubits/cart_cubit/cart_cubit.dart';
 import 'package:vorratgo/core/theming/constants.dart';
+import 'package:vorratgo/features/cart/presentation/pages/cart.dart';
 import 'package:vorratgo/features/home/presentation/screens/home.dart';
 import 'package:vorratgo/features/profile_center/presentation/screens/profile_center.dart';
 import 'package:vorratgo/generated/l10n.dart';
@@ -18,13 +21,14 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     Text('Search', style: optionStyle),
-    Text('cart', style: optionStyle),
+    CartScreen(),
     Text('favorits', style: optionStyle),
     ProfileCenter(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    final CartCubit cubit = context.read<CartCubit>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -81,10 +85,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                             minWidth: 18,
                             minHeight: 18,
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              '2',
-                              style: TextStyle(
+                              cubit.items.length.toString(),
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 11,
                                 fontWeight: FontWeight.bold,

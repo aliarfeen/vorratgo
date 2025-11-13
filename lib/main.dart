@@ -5,27 +5,34 @@ import 'package:vorratgo/bloc_observer.dart';
 import 'package:vorratgo/core/DI/shared_prefernces/localization_di.dart';
 import 'package:vorratgo/core/DI/web_services/web_services_di.dart';
 import 'package:vorratgo/core/cubits/change_lang_cubit/change_lang_cubit.dart';
+import 'package:vorratgo/core/cubits/cart_cubit/cart_cubit.dart';
 import 'package:vorratgo/core/routing/app_router.dart';
 import 'package:vorratgo/vorrat_go.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await setupLocator();
+  await initDI();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarIconBrightness: Brightness.light,
       statusBarColor: Colors.transparent,
     ),
   );
-  WidgetsFlutterBinding.ensureInitialized();
-  await setupLocator();
-  await initDI();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   Bloc.observer = AppBlocObserver();
+
   runApp(
-    BlocProvider(
-      create: (context) => getIt<ChangeLangCubit>(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<ChangeLangCubit>()),
+        BlocProvider(create: (_) => getIt<CartCubit>()),
+      ],
       child: VorratGo(appRouter: AppRouter()),
     ),
   );

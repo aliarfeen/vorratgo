@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:vorratgo/core/cubits/cart_cubit/cart_cubit.dart';
 import 'package:vorratgo/core/data/repository/local_repository.dart';
 import 'package:vorratgo/core/data/repository/user_repository.dart';
 import 'package:vorratgo/core/data/repository/user_repository_impl.dart';
@@ -49,10 +50,13 @@ Future<void> initDI() async {
     () => UserRepositoryImpl(sl<FirebaseAuth>(), sl<FirebaseFirestore>()),
   );
 
+  //  User Repository & Cubits --> Firebase & Firestore and more related injections to user
   sl.registerFactory(
     () => FirebaseEmailPasswordAuthCubit(sl<UserRepository>(), sl<LocalRepo>()),
   );
   sl.registerFactory(() => UserProfileCubit(sl<UserRepository>()));
 
   sl.registerFactory(() => UserProfileCenterCubit(sl<LocalRepo>()));
+
+  sl.registerLazySingleton(() => CartCubit());
 }

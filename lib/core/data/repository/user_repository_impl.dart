@@ -60,4 +60,30 @@ class UserRepositoryImpl implements UserRepository {
   Future<void> signOut() async {
     await _auth.signOut();
   }
+
+  @override
+  Future<Map<String, dynamic>?> updateUserData(String uid) async {
+    final docRef = _firestore.collection('users').doc(uid);
+    final snap = await docRef.get();
+
+    if (!snap.exists) return null;
+
+    final data = Map<String, dynamic>.from(snap.data() ?? {});
+
+    // normalize cart and favorites (handle missing or different spellings)
+    final cart = List<dynamic>.from(data['cart'] ?? []);
+    final favorites = List<dynamic>.from(
+      data['favorites'] ?? data['favourites'] ?? [],
+    );
+
+    // ensure stored document has the normalized fields
+    await docRef.set({
+      ...data,
+      'cart': cart,
+      'favorites': favorites,
+    }, SetOptions(merge: true));
+
+    final updatedSnap = await docRef.get();
+    return updatedSnap.data();
+  }
 }

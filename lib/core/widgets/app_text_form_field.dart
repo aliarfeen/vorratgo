@@ -54,7 +54,7 @@ class AppTextFieldForm extends StatelessWidget {
           filled: true,
           suffixIcon: suffixIcon,
           //suffix: IconButton(onPressed: suffixPressed, icon: Icon(suffixIcon)),
-          suffixIconColor: AppColors.lightGrey,
+          suffixIconColor: AppColors.green,
           hintText: hintText,
           labelText: lableText,
 

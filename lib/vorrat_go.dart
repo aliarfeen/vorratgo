@@ -31,7 +31,10 @@ class VorratGo extends StatelessWidget {
               supportedLocales: S.delegate.supportedLocales,
               title: 'Vorrat Go',
               themeMode: ThemeMode.dark,
-              theme: ThemeData(primaryColor: Colors.grey),
+              theme: ThemeData(
+                primaryColor: Colors.grey,
+                scaffoldBackgroundColor: Colors.white,
+              ),
               debugShowCheckedModeBanner: false,
               initialRoute: Routes.authGate,
               onGenerateRoute: appRouter.generateRoute,

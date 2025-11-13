@@ -11,17 +11,17 @@ class ProductsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(category),
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.tune))],
-          leading: IconButton(
-            onPressed: () => context.pop(),
-            icon: Icon(Icons.arrow_back_ios_new_outlined),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(category),
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.tune))],
+        leading: IconButton(
+          onPressed: () => context.pop(),
+          icon: Icon(Icons.arrow_back_ios_new_outlined),
         ),
-        body: BlocConsumer<ProductCubit, ProductState>(
+      ),
+      body: SafeArea(
+        child: BlocConsumer<ProductCubit, ProductState>(
           listener: (context, state) {},
           builder: (context, state) {
             if (state is ProductLoading) {
