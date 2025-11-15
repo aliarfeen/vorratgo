@@ -16,109 +16,110 @@ class ProductsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      physics: const BouncingScrollPhysics(),
-      shrinkWrap: true,
-      padding: const EdgeInsets.all(12),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 0.7,
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 10.0,
-      ),
-      itemCount: itemCount,
-      itemBuilder: (context, index) {
-        final CartCubit cubit = context.read<CartCubit>();
-        final product = products[index];
-        return InkWell(
-          onTap: () {
-            context.pushNamed(Routes.productDetails, arguments: product);
-          },
-          child: Container(
-            height: 260.h,
-            width: 173.3249969482422.w,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-              vertical: 8.0,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12.0),
-              border: Border.all(color: AppColors.grey),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Hero(
-                  tag: product.id,
-                  child: Image.network(
-                    product.imgUri,
-                    width: 121.68871307373047,
-                    height: 121.68871307373047,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Icon(
-                        Icons.broken_image,
-                        size: 121.68871307373047,
-                        color: Colors.grey,
-                      );
-                    },
-                  ),
+    return BlocBuilder<CartCubit, CartState>(
+      builder: (context, state) {
+        return GridView.builder(
+          physics: const BouncingScrollPhysics(),
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(12),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 0.7,
+            crossAxisSpacing: 10.0,
+            mainAxisSpacing: 10.0,
+          ),
+          itemCount: itemCount,
+          itemBuilder: (context, index) {
+            final CartCubit cubit = context.read<CartCubit>();
+            final product = products[index];
+            return InkWell(
+              onTap: () {
+                context.pushNamed(Routes.productDetails, arguments: product);
+              },
+              child: Container(
+                height: 260.h,
+                width: 173.3249969482422.w,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 8.0,
                 ),
-                Hero(
-                  tag: '${product.id}_name',
-                  child: Text(
-                    Localizations.localeOf(context).languageCode == 'ar'
-                        ? product.name.ar
-                        : product.name.en,
-                    textAlign: TextAlign.start,
-                  ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12.0),
+                  border: Border.all(color: AppColors.grey),
                 ),
-                verticalSpacer(10.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '${product.price} LE',
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                    Hero(
+                      tag: product.id,
+                      child: Image.network(
+                        product.imgUri,
+                        width: 121.68871307373047,
+                        height: 121.68871307373047,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Icon(
+                            Icons.broken_image,
+                            size: 121.68871307373047,
+                            color: Colors.grey,
+                          );
+                        },
                       ),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.add_box_rounded),
-                      color: AppColors.green,
-
-                      iconSize: 45.h,
-                      onPressed: () {
-                        final cartItem = CartItem(
-                          productId: product.id,
-                          quantity: '1',
-                          price: product.price.toDouble(),
-                          imgUri: product.imgUri,
-                          name: product.name.en,
-                        );
-                        cubit.addToCart(cartItem);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              '${Localizations.localeOf(context).languageCode == 'ar' ? product.name.ar : product.name.en} added to cart',
-                            ),
-                            duration: const Duration(seconds: 2),
+                    Hero(
+                      tag: '${product.id}_name',
+                      child: Text(
+                        Localizations.localeOf(context).languageCode == 'ar'
+                            ? product.name.ar
+                            : product.name.en,
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                    verticalSpacer(10.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '${product.price} LE',
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
-                        );
-                      },
-                      // onPressed: () {
-                      //   context.read<ProductCubit>().addToCart(product);
-                      // },
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.add_box_rounded),
+                          color: AppColors.green,
+
+                          iconSize: 45.h,
+                          onPressed: () {
+                            final cartItem = CartItem(
+                              productId: product.id,
+                              quantity: '1',
+                              price: product.price.toDouble(),
+                              imgUri: product.imgUri,
+                              name: product.name.en,
+                            );
+                            cubit.addToCart(cartItem);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  '${Localizations.localeOf(context).languageCode == 'ar' ? product.name.ar : product.name.en} added to cart',
+                                ),
+                                duration: const Duration(seconds: 2),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         );
       },
     );

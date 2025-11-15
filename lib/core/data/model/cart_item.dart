@@ -32,4 +32,9 @@ class CartItem {
       'name': name,
     };
   }
+
+  @override
+  String toString() {
+    return 'CartItem(name: $name, quantity: $quantity, price: $price) \n';
+  }
 }

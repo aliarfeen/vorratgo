@@ -4,12 +4,11 @@ import 'package:vorratgo/core/theming/constants.dart'; // Ensure this path is co
 
 class CartItemWidget extends StatelessWidget {
   final String productId;
-  final String quantity; // Represents the current item count (e.g., '1')
+  final String quantity;
   final double price;
   final String imgUri;
   final String name;
 
-  // Added callbacks for action
   final VoidCallback onQuantityIncrease;
   final VoidCallback onQuantityDecrease;
   final VoidCallback onRemove;

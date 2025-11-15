@@ -31,7 +31,7 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<ChangeLangCubit>()),
-        BlocProvider(create: (_) => getIt<CartCubit>()),
+        BlocProvider<CartCubit>(create: (_) => sl<CartCubit>()),
       ],
       child: VorratGo(appRouter: AppRouter()),
     ),

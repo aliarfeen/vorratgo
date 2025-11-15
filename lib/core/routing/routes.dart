@@ -9,5 +9,10 @@ class Routes {
   static const String productDetails = '/productDetails';
   static const String emailPasswordAuth = '/emailPasswordAuth';
   static const String authGate = '/authGate';
+  static const String cart = '/cart';
+  static const String initialRoute = '/';
+}
+
+class AppRoutes {
   static const String initialRoute = '/'; // MainNavigationScreen
 }

@@ -7,6 +7,7 @@ import 'package:vorratgo/core/widgets/main_navigation_screen.dart';
 import 'package:vorratgo/core/cubits/user_auth_cubit/firebase_email_password_auth_cubit.dart';
 import 'package:vorratgo/features/authentication/presentation/pages/auth_gate.dart';
 import 'package:vorratgo/features/authentication/presentation/pages/email_auth.dart';
+import 'package:vorratgo/features/cart/presentation/pages/cart.dart';
 import 'package:vorratgo/features/onboarding/bloc/cubit/onboarding_cubit.dart';
 import 'package:vorratgo/features/landing/presentation/widgets/landing.dart';
 import 'package:vorratgo/features/phone_authentication/bloc/cubit/phone_auth_cubit.dart';
@@ -31,6 +32,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SelectLanguageScreen());
       case '/authGate':
         return MaterialPageRoute(builder: (_) => const AuthGatePage());
+      case '/cart':
+        return MaterialPageRoute(builder: (_) => const CartScreen());
       case '/emailPasswordAuth':
         return MaterialPageRoute(
           builder:
