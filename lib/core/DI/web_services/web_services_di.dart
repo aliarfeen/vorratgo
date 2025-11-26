@@ -4,6 +4,11 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vorratgo/core/cubits/cart_cubit/cart_cubit.dart';
+import 'package:vorratgo/core/cubits/fav_cubit/favorites_cubit.dart';
+import 'package:vorratgo/core/data/repository/cart_repository.dart';
+import 'package:vorratgo/core/data/repository/cart_repository_impl.dart';
+import 'package:vorratgo/core/data/repository/favorites_repository.dart';
+import 'package:vorratgo/core/data/repository/favorites_repository_impl.dart';
 import 'package:vorratgo/core/data/repository/local_repository.dart';
 import 'package:vorratgo/core/data/repository/user_repository.dart';
 import 'package:vorratgo/core/data/repository/user_repository_impl.dart';
@@ -58,5 +63,18 @@ Future<void> initDI() async {
 
   sl.registerFactory(() => UserProfileCenterCubit(sl<LocalRepo>()));
 
-  sl.registerLazySingleton(() => CartCubit());
+  // Cart Repository & Cubit
+  sl.registerLazySingleton<CartRepository>(
+    () => CartRepositoryImpl(sl<FirebaseAuth>(), sl<FirebaseFirestore>()),
+  );
+
+  sl.registerLazySingleton(() => CartCubit(sl<CartRepository>()));
+
+  // Favorites Repository & Cubit
+  sl.registerLazySingleton<FavoritesRepository>(
+    () => FavoritesRepositoryImpl(sl<FirebaseAuth>(), sl<FirebaseFirestore>()),
+  );
+
+  sl.registerLazySingleton(() => FavoritesCubit(sl<FavoritesRepository>()));
 }
+

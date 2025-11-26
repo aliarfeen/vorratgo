@@ -19,6 +19,7 @@ import 'package:vorratgo/features/products/cubit/product_cubit.dart';
 import 'package:vorratgo/features/products/data/model/product_model.dart';
 import 'package:vorratgo/features/products/presentaion/screens/product_details.dart';
 import 'package:vorratgo/features/products/presentaion/screens/products.dart';
+import 'package:vorratgo/features/profile_center/cubit/user_center_cubit.dart';
 import 'package:vorratgo/features/select_language/prsentation/screens/select_lang.dart';
 
 class AppRouter {
@@ -33,7 +34,15 @@ class AppRouter {
       case '/authGate':
         return MaterialPageRoute(builder: (_) => const AuthGatePage());
       case '/cart':
-        return MaterialPageRoute(builder: (_) => const CartScreen());
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create:
+                    (context) =>
+                        sl<UserProfileCenterCubit>()..loadUserProfile(),
+                child: const CartScreen(),
+              ),
+        );
       case '/emailPasswordAuth':
         return MaterialPageRoute(
           builder:
