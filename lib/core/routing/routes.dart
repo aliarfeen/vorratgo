@@ -12,7 +12,3 @@ class Routes {
   static const String cart = '/cart';
   static const String initialRoute = '/';
 }
-
-class AppRoutes {
-  static const String initialRoute = '/'; // MainNavigationScreen
-}
