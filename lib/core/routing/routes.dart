@@ -10,5 +10,6 @@ class Routes {
   static const String emailPasswordAuth = '/emailPasswordAuth';
   static const String authGate = '/authGate';
   static const String cart = '/cart';
+  static const String favorites = '/favorites';
   static const String initialRoute = '/';
 }

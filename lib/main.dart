@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +34,16 @@ void main() async {
       providers: [
         BlocProvider(create: (_) => getIt<ChangeLangCubit>()),
         BlocProvider<CartCubit>(create: (_) => sl<CartCubit>()),
-        BlocProvider<FavoritesCubit>(create: (_) => sl<FavoritesCubit>()),
+        BlocProvider<FavoritesCubit>(
+          create: (_) {
+            final cubit = sl<FavoritesCubit>();
+            final user = FirebaseAuth.instance.currentUser;
+            if (user != null) {
+              cubit.fetchFavoritesFirebase(user.uid);
+            }
+            return cubit;
+          },
+        ),
       ],
       child: VorratGo(appRouter: AppRouter()),
     ),

@@ -6,6 +6,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:vorratgo/core/cubits/cart_cubit/cart_cubit.dart';
 import 'package:vorratgo/core/theming/constants.dart';
 import 'package:vorratgo/features/cart/presentation/pages/cart.dart';
+import 'package:vorratgo/features/favorites/presentation/pages/favorites_screen.dart';
 import 'package:vorratgo/features/home/presentation/screens/home.dart';
 import 'package:vorratgo/features/profile_center/presentation/screens/profile_center.dart';
 import 'package:vorratgo/generated/l10n.dart';
@@ -22,7 +23,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     HomeScreen(),
     Text('Search', style: optionStyle),
     CartScreen(),
-    Text('favorits', style: optionStyle),
+    FavoritesScreen(),
     ProfileCenter(),
   ];
 
@@ -125,7 +126,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                     ),
                     GButton(
                       icon: Icons.favorite_border_outlined,
-                      text: S.of(context).bakery,
+                      text: 'Favorites',
                     ),
 
                     GButton(icon: LineIcons.user, text: S.of(context).profile),

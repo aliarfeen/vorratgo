@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vorratgo/core/helpers/extensions.dart';
 import 'package:vorratgo/core/routing/routes.dart';
 import 'package:vorratgo/core/theming/constants.dart';
-import 'package:vorratgo/features/phone_authentication/bloc/cubit/phone_auth_cubit.dart';
+import 'package:vorratgo/features/otp_authentication/bloc/cubit/phone_auth_cubit.dart';
 
 class PhoneAuthBlocListener extends StatelessWidget {
   const PhoneAuthBlocListener({super.key});

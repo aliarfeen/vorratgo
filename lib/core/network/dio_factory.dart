@@ -13,16 +13,16 @@ class DioFactory {
       ),
     );
 
-    // dio.interceptors.addAll([
-    //   PrettyDioLogger(
-    //     requestHeader: true,
-    //     requestBody: true,
-    //     responseBody: true,
-    //     responseHeader: false,
-    //     compact: true,
-    //     maxWidth: 90,
-    //   ),
-    // ]);
+    dio.interceptors.addAll([
+      PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        responseBody: true,
+        responseHeader: false,
+        compact: true,
+        maxWidth: 90,
+      ),
+    ]);
 
     return dio;
   }

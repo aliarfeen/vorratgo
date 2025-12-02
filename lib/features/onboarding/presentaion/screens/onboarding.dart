@@ -143,7 +143,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                   ),
                   onPressed: () {
-                    context.pushReplacementNamed(Routes.selectLanguage);
+                    context.pushReplacementNamed(Routes.authGate);
                     context.read<OnboardingCubit>().completeOnboarding();
                   },
                   child: Text(

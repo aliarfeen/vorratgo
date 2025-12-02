@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vorratgo/core/helpers/spacers.dart';
 import 'package:vorratgo/core/widgets/app_submit_button.dart';
-import 'package:vorratgo/features/phone_authentication/bloc/cubit/phone_auth_cubit.dart';
-import 'package:vorratgo/features/phone_authentication/presentaion/widgets/auth_text_header.dart';
-import 'package:vorratgo/features/phone_authentication/presentaion/widgets/otp_field.dart';
+import 'package:vorratgo/features/otp_authentication/bloc/cubit/phone_auth_cubit.dart';
+import 'package:vorratgo/features/otp_authentication/presentaion/widgets/auth_text_header.dart';
+import 'package:vorratgo/features/otp_authentication/presentaion/widgets/otp_field.dart';
 import 'package:vorratgo/generated/l10n.dart';
 
 class OTPScreen extends StatelessWidget {

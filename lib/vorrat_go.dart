@@ -36,7 +36,7 @@ class VorratGo extends StatelessWidget {
                 scaffoldBackgroundColor: Colors.white,
               ),
               debugShowCheckedModeBanner: false,
-              initialRoute: Routes.authGate,
+              initialRoute: Routes.onboarding,
               onGenerateRoute: appRouter.generateRoute,
             );
           },

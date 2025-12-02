@@ -6,10 +6,10 @@ import 'package:vorratgo/core/helpers/spacers.dart';
 import 'package:vorratgo/core/routing/routes.dart';
 import 'package:vorratgo/core/theming/constants.dart';
 import 'package:vorratgo/core/widgets/app_submit_button.dart';
-import 'package:vorratgo/features/phone_authentication/bloc/cubit/phone_auth_cubit.dart';
-import 'package:vorratgo/features/phone_authentication/presentaion/widgets/auth_text_header.dart';
-import 'package:vorratgo/features/phone_authentication/presentaion/widgets/phone_auth_bloc_listener.dart';
-import 'package:vorratgo/features/phone_authentication/presentaion/widgets/phone_num_field_row.dart';
+import 'package:vorratgo/features/otp_authentication/bloc/cubit/phone_auth_cubit.dart';
+import 'package:vorratgo/features/otp_authentication/presentaion/widgets/auth_text_header.dart';
+import 'package:vorratgo/features/otp_authentication/presentaion/widgets/phone_auth_bloc_listener.dart';
+import 'package:vorratgo/features/otp_authentication/presentaion/widgets/phone_num_field_row.dart';
 import 'package:vorratgo/generated/l10n.dart';
 
 class AddPhoneNumberScreen extends StatelessWidget {

@@ -8,11 +8,12 @@ import 'package:vorratgo/core/cubits/user_auth_cubit/firebase_email_password_aut
 import 'package:vorratgo/features/authentication/presentation/pages/auth_gate.dart';
 import 'package:vorratgo/features/authentication/presentation/pages/email_auth.dart';
 import 'package:vorratgo/features/cart/presentation/pages/cart.dart';
+import 'package:vorratgo/features/favorites/presentation/pages/favorites_screen.dart';
 import 'package:vorratgo/features/onboarding/bloc/cubit/onboarding_cubit.dart';
 import 'package:vorratgo/features/landing/presentation/widgets/landing.dart';
-import 'package:vorratgo/features/phone_authentication/bloc/cubit/phone_auth_cubit.dart';
-import 'package:vorratgo/features/phone_authentication/presentaion/screens/add_phone_number.dart';
-import 'package:vorratgo/features/phone_authentication/presentaion/screens/otp_phone_verification.dart';
+import 'package:vorratgo/features/otp_authentication/bloc/cubit/phone_auth_cubit.dart';
+import 'package:vorratgo/features/otp_authentication/presentaion/screens/add_phone_number.dart';
+import 'package:vorratgo/features/otp_authentication/presentaion/screens/otp_phone_verification.dart';
 import 'package:vorratgo/features/home/presentation/screens/home.dart';
 import 'package:vorratgo/features/onboarding/presentaion/screens/onboarding.dart';
 import 'package:vorratgo/features/products/cubit/product_cubit.dart';
@@ -115,6 +116,8 @@ class AppRouter {
                 child: ProductDetailsScreen(product: args),
               ),
         );
+      case '/favorites':
+        return MaterialPageRoute(builder: (_) => const FavoritesScreen());
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
     }

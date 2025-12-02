@@ -1,104 +1,148 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:vorratgo/core/helpers/spacers.dart';
 import 'package:vorratgo/core/theming/constants.dart';
-import 'package:vorratgo/features/phone_authentication/presentaion/widgets/auth_text_header.dart';
+import 'package:vorratgo/core/helpers/spacers.dart';
 import 'package:vorratgo/features/products/data/model/product_model.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final Product product;
   ProductDetailsScreen({super.key, required this.product});
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(title: Text("${product.name.en} Details")),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(32.0),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [AppColors.yellow, AppColors.lightGreen],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Hero(
-                  tag: product.id,
+    return Scaffold(
+      backgroundColor: Colors.grey.shade100,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.share, color: Colors.black),
+            onPressed: () {},
+          ),
+        ],
+      ),
+
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ///  Image slider container
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              child: Hero(
+                tag: product.id,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
                   child: Image.network(
                     product.imgUri,
-                    width: 200,
-                    height: 200,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Icon(
-                        Icons.broken_image,
-                        size: 80,
-                        color: Colors.grey,
-                      );
-                    },
+                    height: 220,
+                    fit: BoxFit.fitHeight,
                   ),
                 ),
               ),
-              verticalSpacer(30.h),
-              Hero(
-                tag: '${product.id}_name',
-                child: AuthTextHeader(
-                  title: product.name.en,
-                  description: product.description.en,
-                ),
-              ),
-              verticalSpacer(10.h),
-              Divider(color: AppColors.orange, thickness: 5.0),
-              Text(
-                "Price: ${product.price} LE",
-                style: TextStyles.orange24Bold,
-              ),
-              verticalSpacer(10.h),
-              Container(
-                width: double.infinity,
-                height: 80.h,
-                margin: EdgeInsets.all(10.h),
-                padding: EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.orange, width: 3.0),
-                  borderRadius: BorderRadius.circular(64.0),
-                ),
+            ),
 
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.remove_circle_outline_sharp),
-                      color: AppColors.orange,
-                      iconSize: 32.h,
+            ///  Product Name + Favorite Icon
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    product.name.en,
+                    style: TextStyles.black20Bold.copyWith(fontSize: 26),
+                  ),
+                  Icon(Icons.favorite_border, size: 30),
+                ],
+              ),
+            ),
+
+            verticalSpacer(20),
+
+            /// ⭐ Quantity + Price
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  /// Quantity box
+                  Container(
+                    height: 50,
+                    width: 140,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: Colors.grey.shade400),
                     ),
-                    Text(
-                      textAlign: TextAlign.center,
-                      "Quantity\n1",
-                      style: TextStyles.orange24Bold.copyWith(fontSize: 18.sp),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(Icons.remove, color: Colors.green, size: 28),
+                        Text(
+                          "1",
+                          style: TextStyles.orange24Bold.copyWith(fontSize: 20),
+                        ),
+                        Icon(Icons.add, color: Colors.green, size: 28),
+                      ],
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.add_circle_outline_sharp),
-                      color: AppColors.orange,
-                      iconSize: 32.h,
+                  ),
+
+                  /// Price
+                  Text(
+                    "\$${product.price}",
+                    style: TextStyles.black20Bold.copyWith(fontSize: 28),
+                  ),
+                ],
+              ),
+            ),
+
+            verticalSpacer(30),
+
+            /// ⭐ Product Detail (Expandable)
+            ExpansionTile(
+              title: Text("Product Detail", style: TextStyles.black16Reguler),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 10,
+                  ),
+                  child: Text(
+                    product.description.en,
+                    style: TextStyle(color: Colors.grey.shade700, height: 1.4),
+                  ),
+                ),
+              ],
+            ),
+
+            verticalSpacer(20),
+
+            /// ⭐ Add to Basket Button
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: SizedBox(
+                width: double.infinity,
+                height: 60,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
                     ),
-                  ],
+                  ),
+                  child: const Text(
+                    "Add To Basket",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
                 ),
               ),
-              // TODO: New Feature: on creating cart logic, add a button to add this product to the cart &counter etccc
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
