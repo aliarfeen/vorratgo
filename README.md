@@ -1,7 +1,13 @@
 # VorratGo 🛒  
 **VorratGo** is a modern, sleek, and scalable eCommerce mobile application built using **Flutter**. Designed for speed, performance, and great user experience, VorratGo enables users to browse categories, discover offers, search products, and manage carts efficiently.
 
-<video src="https://github.com/aliarfeen/vorratgo/blob/main/assets/video_26_02_08_19_24_08.mp4" width="100%" height="100%" controls></video>
+
+
+
+https://github.com/user-attachments/assets/9029e4a0-4a05-400c-93bc-59f550b67285
+
+
+
 
 ---
 
